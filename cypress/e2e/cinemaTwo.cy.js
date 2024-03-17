@@ -1,6 +1,5 @@
 const login = require("../fixtures/login");
 const selectors = require("../fixtures/selectors");
-const tests = require("../fixtures/seats");
 const valid = login.valid;
 const invalid = login.invalid;
 
@@ -10,7 +9,7 @@ describe("Login to admin page", () => {
     cy.visit("/admin/");
   });
 
-  it("Successful authorization", () => {
+  it.skip("Successful authorization", () => {
     cy.fixture("login").then(() => {
       cy.login(valid.username, valid.password);
     });

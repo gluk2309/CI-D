@@ -1,8 +1,6 @@
-const login = require("../fixtures/login");
 const selectors = require("../fixtures/selectors");
 const tests = require("../fixtures/seats");
-const valid = login.valid;
-const invalid = login.invalid;
+
 
 describe("Working with the user interface", () => {
   beforeEach(() => {

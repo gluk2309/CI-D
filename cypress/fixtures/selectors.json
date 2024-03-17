@@ -20,7 +20,7 @@
 
   "messageAboutSelectedTickets": "Вы выбрали билеты",
 
-   "successfulAuthorization": "Администраторррская",
+  "successfulAuthorization": "Администраторррская",
 
   "errorMessage": "Ошибка авторизации",
 
@@ -28,5 +28,6 @@
 
   "getMovie": "[draggable='true'][data-film-id='119'] > .conf-step__movie-title",
   
-  "getTitle": ".movie__title"
+  "getTitle": ".movie__title",
+  "vip": ".buying-scheme__chair_vip"
 }

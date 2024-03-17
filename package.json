@@ -4,17 +4,36 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:cinemaOne": "npx cypress run --record --key 3d786248-2aad-4b5c-9896-39e366c7fa40 --group cinemaOne --spec \"cypress/e2e/cinemaOne.cy.js\" --ci-build-id 7",
-    "test:cinemaTwo": "npx cypress run --record --key 3d786248-2aad-4b5c-9896-39e366c7fa40 --group cinemaTwo --spec \"cypress/e2e/cinemaTwo.cy.js\" --ci-build-id 7",
-    "test:parallel": "run-p -c test:cinemaOne test:cinemaTwo",
+    
+    "test:cinemaOne:chrome": "npx cypress run --record --spec \"cypress/e2e/cinemaOne.cy.js\" --group cinemaOne:chrome --browser chrome",
+    "test:cinemaTwo:chrome": "npx cypress run --record --spec \"cypress/e2e/cinemaTwo.cy.js\" --group cinemaTwo:chrome --browser chrome",
+    "test:parallel:chrome": "run-p -c test:cinemaOne:chrome test:cinemaTwo:chrome",
 
-    "start:key": "npx cypress run --record --key 3d786248-2aad-4b5c-9896-39e366c7fa40"
+    "test:cinemaOne:edge": "npx cypress run --record --spec \"cypress/e2e/cinemaOne.cy.js\" --group cinemaOne:edge --browser edge",
+    "test:cinemaTwo:edge": "npx cypress run --record --spec \"cypress/e2e/cinemaTwo.cy.js\" --group cinemaTwo:edge --browser edge",
+    "test:parallel:edge": "run-p -c test:cinemaOne:edge test:cinemaTwo:edge",
+
+    "test:cinemaOne:electron": "npx cypress run --record --spec \"cypress/e2e/cinemaOne.cy.js\" --group cinemaOne:electron --browser electron",
+    "test:cinemaTwo:electron": "npx cypress run --record --spec \"cypress/e2e/cinemaTwo.cy.js\" --group cinemaTwo:electron --browser electron",
+    "test:parallel:electron": "run-p -c test:cinemaOne:electron test:cinemaTwo:electron",
+
+    "test:parallel:all": "run-p -c test:parallel:chrome test:parallel:edge test:parallel:electron",
+    
+    "test:parallel:twoBrowsers": "run-p -c test:parallel:chrome test:parallel:edge",
+
+    "test:parallel:movie": "npx cypress run --record --spec \"cypress/e2e/movie/**/*\" --group movie --browser edge",
+    "test:parallel:seat": "npx cypress run --record --spec \"cypress/e2e/seat/**/*\" --group seat --browser electron",
+    "test:parallel:movieSeat": "run-p -c test:parallel:movie test:parallel:seat",
+    
+
+    "start:key": "npx cypress run --record --key 3d786248-2aad-4b5c-9896-39e366c7fa40",
+    "start:jenkins": "java -jar jenkins.war -httpsPort=8080 --enable-future-java"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.6.6",
+    "cypress": "^13.7.0",
     "npm-run-all": "^4.1.5"
   }
 }
